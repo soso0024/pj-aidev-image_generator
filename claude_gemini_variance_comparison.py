@@ -21,16 +21,26 @@ gemini_rows = [
     ("Run 5", 491500, 580000),
 ]
 
+gpt_rows = [
+    ("Run 1", 319000, 301000),
+    ("Run 2", 454000, 296000),
+    ("Run 3", 370000, 363000),
+    ("Run 4", 433000, 373000),
+    ("Run 5", 386000, 300000),
+]
+
 
 def create_variance_comparison_chart():
     """ばらつき（標準偏差）を表現した棒グラフを作成"""
-    fig, ax = plt.subplots(figsize=(12, 8))
+    fig, ax = plt.subplots(figsize=(14, 8))
 
     # データの抽出
     claude_with = [row[1] for row in claude_rows]
     claude_without = [row[2] for row in claude_rows]
     gemini_with = [row[1] for row in gemini_rows]
     gemini_without = [row[2] for row in gemini_rows]
+    gpt_with = [row[1] for row in gpt_rows]
+    gpt_without = [row[2] for row in gpt_rows]
 
     # 統計値の計算
     data_stats = {
@@ -50,6 +60,14 @@ def create_variance_comparison_chart():
             "mean": np.mean(gemini_without),
             "std": np.std(gemini_without, ddof=1),
         },
+        "GPT with Docstrings": {
+            "mean": np.mean(gpt_with),
+            "std": np.std(gpt_with, ddof=1),
+        },
+        "GPT without Docstrings": {
+            "mean": np.mean(gpt_without),
+            "std": np.std(gpt_without, ddof=1),
+        },
     }
 
     # カテゴリーとデータの準備
@@ -58,11 +76,11 @@ def create_variance_comparison_chart():
     stds = [data_stats[cat]["std"] for cat in categories]
 
     # カラーパレット
-    colors = ["#E74C3C", "#C0392B", "#3498DB", "#2980B9"]
+    colors = ["#E74C3C", "#C0392B", "#3498DB", "#2980B9", "#27AE60", "#229954"]
 
     # バーの位置
     x = np.arange(len(categories))
-    width = 0.6
+    width = 0.7
 
     # バーグラフの描画（エラーバー付き）
     bars = ax.bar(
@@ -75,11 +93,11 @@ def create_variance_comparison_chart():
         edgecolor="black",
         linewidth=1.2,
         error_kw={
-            "elinewidth": 2,
-            "ecolor": "black",
-            "alpha": 0.7,
-            "capsize": 8,
-            "capthick": 2,
+            "elinewidth": 3,  # エラーバーの線の太さを2→4に変更
+            "ecolor": "darkred",  # エラーバーの色を黒→暗赤に変更（より目立つ）
+            "alpha": 0.9,  # エラーバーの透明度を0.7→0.9に変更（より濃く）
+            "capsize": 15,  # エラーバーのキャップサイズを8→15に変更
+            "capthick": 3,  # エラーバーのキャップの太さを2→4に変更
         },
     )
 
@@ -89,7 +107,7 @@ def create_variance_comparison_chart():
         # 平均値を表示
         ax.text(
             bar.get_x() + bar.get_width() / 2,
-            height + std + 10000,
+            height + std + 15000,  # 距離を10000→15000に変更（バランス調整）
             f"{mean:,.0f}",
             ha="center",
             va="bottom",
@@ -99,13 +117,14 @@ def create_variance_comparison_chart():
         # 標準偏差を表示
         ax.text(
             bar.get_x() + bar.get_width() / 2,
-            height + std + 25000,
+            height + std + 45000,  # 距離を25000→45000に変更（より離す）
             f"±{std:,.0f}",
             ha="center",
             va="bottom",
-            fontsize=9,
+            fontsize=11,
             style="italic",
-            color="gray",
+            color="darkred",  # 色をgray→darkredに変更（エラーバーと統一）
+            fontweight="bold",
         )
 
     # 軸とラベルの設定
@@ -152,14 +171,16 @@ def create_variance_comparison_chart():
 
 
 def create_coefficient_of_variation_chart():
-    """変動係数（CV）を表現した棒グラフを作成"""
-    fig, ax = plt.subplots(figsize=(10, 6))
+    """変動係数 (CV) を表現した棒グラフを作成"""
+    fig, ax = plt.subplots(figsize=(12, 6))
 
     # データの抽出
     claude_with = [row[1] for row in claude_rows]
     claude_without = [row[2] for row in claude_rows]
     gemini_with = [row[1] for row in gemini_rows]
     gemini_without = [row[2] for row in gemini_rows]
+    gpt_with = [row[1] for row in gpt_rows]
+    gpt_without = [row[2] for row in gpt_rows]
 
     # 変動係数の計算 (CV = std/mean * 100)
     datasets = {
@@ -167,6 +188,8 @@ def create_coefficient_of_variation_chart():
         "Claude without\nDocstrings": claude_without,
         "Gemini with\nDocstrings": gemini_with,
         "Gemini without\nDocstrings": gemini_without,
+        "GPT with\nDocstrings": gpt_with,
+        "GPT without\nDocstrings": gpt_without,
     }
 
     categories = list(datasets.keys())
@@ -179,7 +202,7 @@ def create_coefficient_of_variation_chart():
         cvs.append(cv)
 
     # カラーパレット
-    colors = ["#E74C3C", "#C0392B", "#3498DB", "#2980B9"]
+    colors = ["#E74C3C", "#C0392B", "#3498DB", "#2980B9", "#27AE60", "#229954"]
 
     # バーの位置
     x = np.arange(len(categories))
@@ -243,12 +266,16 @@ def print_variance_statistics():
     claude_without = [row[2] for row in claude_rows]
     gemini_with = [row[1] for row in gemini_rows]
     gemini_without = [row[2] for row in gemini_rows]
+    gpt_with = [row[1] for row in gpt_rows]
+    gpt_without = [row[2] for row in gpt_rows]
 
     datasets = {
         "Claude with Docstrings": claude_with,
         "Claude without Docstrings": claude_without,
         "Gemini with Docstrings": gemini_with,
         "Gemini without Docstrings": gemini_without,
+        "GPT with Docstrings": gpt_with,
+        "GPT without Docstrings": gpt_without,
     }
 
     print("=== ばらつき統計サマリー ===")
