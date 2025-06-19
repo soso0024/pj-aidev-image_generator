@@ -150,12 +150,12 @@ def create_variance_comparison_chart():
     ax.set_ylim(0, max_value * 1.15)
 
     # タイトルの追加
-    ax.set_title(
-        "Token Usage Comparison: Mean Values with Standard Deviation",
-        fontsize=18,
-        fontweight="bold",
-        pad=20,
-    )
+    # ax.set_title(
+    #     "Token Usage Comparison: Mean Values with Standard Deviation",
+    #     fontsize=18,
+    #     fontweight="bold",
+    #     pad=20,
+    # )
 
     # スパインの調整
     ax.spines["top"].set_visible(False)
@@ -241,12 +241,12 @@ def create_coefficient_of_variation_chart():
     ax.set_ylim(0, max(cvs) * 1.15)
 
     # タイトルの追加
-    ax.set_title(
-        "Variability Comparison: Coefficient of Variation",
-        fontsize=18,
-        fontweight="bold",
-        pad=20,
-    )
+    # ax.set_title(
+    #     "Variability Comparison: Coefficient of Variation",
+    #     fontsize=18,
+    #     fontweight="bold",
+    #     pad=20,
+    # )
 
     # スパインの調整
     ax.spines["top"].set_visible(False)
