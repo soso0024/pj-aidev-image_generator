@@ -44,27 +44,27 @@ def create_variance_comparison_chart():
 
     # 統計値の計算
     data_stats = {
-        "Claude with Docstrings": {
+        "Claude with\nDocstrings": {
             "mean": np.mean(claude_with),
             "std": np.std(claude_with, ddof=1),
         },
-        "Claude without Docstrings": {
+        "Claude without\nDocstrings": {
             "mean": np.mean(claude_without),
             "std": np.std(claude_without, ddof=1),
         },
-        "Gemini with Docstrings": {
+        "Gemini with\nDocstrings": {
             "mean": np.mean(gemini_with),
             "std": np.std(gemini_with, ddof=1),
         },
-        "Gemini without Docstrings": {
+        "Gemini without\nDocstrings": {
             "mean": np.mean(gemini_without),
             "std": np.std(gemini_without, ddof=1),
         },
-        "GPT with Docstrings": {
+        "GPT with\nDocstrings": {
             "mean": np.mean(gpt_with),
             "std": np.std(gpt_with, ddof=1),
         },
-        "GPT without Docstrings": {
+        "GPT without\nDocstrings": {
             "mean": np.mean(gpt_without),
             "std": np.std(gpt_without, ddof=1),
         },
@@ -133,9 +133,7 @@ def create_variance_comparison_chart():
     )
     ax.set_xlabel("Model and Configuration", fontsize=16, fontweight="bold")
     ax.set_xticks(x)
-    ax.set_xticklabels(
-        categories, fontsize=12, fontweight="bold", rotation=15, ha="right"
-    )
+    ax.set_xticklabels(categories, fontsize=12, fontweight="bold")
     ax.tick_params(axis="y", labelsize=14)
 
     # 縦軸を千単位（K）で表示
