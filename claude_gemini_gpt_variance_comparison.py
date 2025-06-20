@@ -32,7 +32,7 @@ gpt_rows = [
 
 def create_variance_comparison_chart():
     """ばらつき（標準偏差）を表現した棒グラフを作成"""
-    fig, ax = plt.subplots(figsize=(14, 8))
+    fig, ax = plt.subplots(figsize=(12, 6))
 
     # データの抽出
     claude_with = [row[1] for row in claude_rows]
@@ -163,7 +163,6 @@ def create_variance_comparison_chart():
 
     # レイアウトの調整
     plt.tight_layout()
-    plt.subplots_adjust(bottom=0.15)
 
     return fig, ax
 
