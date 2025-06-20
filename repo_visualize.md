@@ -1,4 +1,5 @@
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'background': '#ffffff', 'primaryColor': '#ffffff', 'fontSize': '24px', 'fontFamily': 'Arial', 'primaryTextColor': '#000000', 'primaryBorderColor': '#000000', 'lineColor': '#000000'}}}%%
 flowchart TD
     %% ===========================================
     %% 🎯 AI Development Dataset Architecture
@@ -6,51 +7,51 @@ flowchart TD
     %% ===========================================
 
     %% 🖥️ PRESENTATION LAYER
-    subgraph PRES [" 🖥️ PRESENTATION LAYER "]
+    subgraph PRES [" 🖥️ PRESENTATION"]
         direction TB
-        main["🚀 main.py<br/><small>Application Entry Point</small>"]:::presentation
+        main["🚀 main.py<br/>Application Entry<br/>Point"]:::presentation
     end
 
     %% 🔧 BUSINESS LAYER
     subgraph BIZ [" 🔧 BUSINESS SERVICES "]
         direction LR
-        auth["🔐 AuthService<br/><small>User Authentication<br/>& Registration</small>"]:::service
-        payment["💳 PaymentService<br/><small>Payment Processing<br/>& Order Management</small>"]:::service
+        auth["🔐 AuthService<br/>User<br/>Authentication<br/>& Registration"]:::service
+        payment["💳 PaymentService<br/>Payment<br/>Processing<br/>& Order<br/>Management"]:::service
     end
 
     %% 📦 DATA ACCESS LAYER
     subgraph DATA [" 📦 DATA ACCESS LAYER "]
         direction LR
-        urepo["👤 UserRepository<br/><small>User Data Access</small>"]:::repo
-        orepo["📋 OrderRepository<br/><small>Order Data Access</small>"]:::repo
+        urepo["👤 UserRepository<br/>User Data Access"]:::repo
+        orepo["📋 OrderRepository<br/>Order Data Access"]:::repo
     end
 
     %% 🎭 DOMAIN MODELS
     subgraph DOMAIN [" 🎭 DOMAIN MODELS "]
         direction LR
-        user["👤 User<br/><small>Domain Entity<br/>ID, Name, Balance</small>"]:::domain
-        order["📋 Order<br/><small>Domain Entity<br/>UserID, Amount, Timestamp</small>"]:::domain
+        user["👤 User<br/>Domain Entity<br/>ID, Name, Balance"]:::domain
+        order["📋 Order<br/>Domain Entity<br/>UserID, Amount,<br/>Timestamp"]:::domain
     end
 
     %% 🛠️ INFRASTRUCTURE
-    subgraph INFRA [" 🛠️ INFRASTRUCTURE & UTILITIES "]
+    subgraph INFRA [" 🛠️ INFRASTRUCTURE "]
         direction TB
         subgraph CONFIG [" ⚙️ Configuration "]
-            config["⚙️ Settings<br/><small>App Configuration</small>"]:::config
+            config["⚙️ Settings<br/>App<br/>Configuration"]:::config
         end
         subgraph UTILS [" 🔧 Utilities "]
             direction LR
-            mathu["🧮 Math Utils<br/><small>Mathematical Operations</small>"]:::util
-            stringu["🔤 String Utils<br/><small>Password Hashing</small>"]:::util
+            mathu["🧮 Math Utils<br/>Mathematical<br/>Operations"]:::util
+            stringu["🔤 String Utils<br/>Password<br/>Hashing"]:::util
         end
         subgraph GEN [" 🎲 Data Generation "]
-            generator["🎲 Data Generator<br/><small>Sample Data Creation</small>"]:::generator
+            generator["🎲 Data<br/>Generator<br/>Sample Data<br/>Creation"]:::generator
         end
     end
 
     %% 💾 STORAGE
     subgraph STORAGE [" 💾 STORAGE LAYER "]
-        store["💾 In-Memory Store<br/><small>Runtime Data Storage<br/>Users & Orders</small>"]:::store
+        store["💾 In-Memory<br/>Store<br/>Runtime Data<br/>Storage<br/>Users & Orders"]:::store
     end
 
     %% ===========================================
@@ -58,29 +59,29 @@ flowchart TD
     %% ===========================================
 
     %% Main Application Flow
-    main ==>|"📖 loads config"| config
-    main ==>|"🎲 generates data"| generator
-    main ==>|"🔐 authenticates users"| auth
-    main ==>|"💳 processes payments"| payment
+    main ==>|"loads"| config
+    main ==>|"generates"| generator
+    main ==>|"auth"| auth
+    main ==>|"payment"| payment
 
     %% Data Generation Flow
-    generator ==>|"👤 creates"| user
-    generator ==>|"📋 creates"| order
+    generator ==>|"creates"| user
+    generator ==>|"creates"| order
 
     %% Business Service Dependencies
-    auth ==>|"👤 manages users"| urepo
-    auth ==>|"🔤 hashes passwords"| stringu
+    auth ==>|"manages"| urepo
+    auth ==>|"uses"| stringu
 
-    payment ==>|"📋 manages orders"| orepo
-    payment ==>|"👤 updates balances"| urepo
+    payment ==>|"manages"| orepo
+    payment ==>|"updates"| urepo
 
     %% Repository to Storage
-    urepo <==>|"💾 stores/fetches"| store
-    orepo <==>|"💾 stores/fetches"| store
+    urepo <==>|"stores"| store
+    orepo <==>|"stores"| store
 
     %% Domain Model Relations
-    user ==>|"📝 defines schema"| urepo
-    order ==>|"📝 defines schema"| orepo
+    user ==>|"defines"| urepo
+    order ==>|"defines"| orepo
 
     %% ===========================================
     %% 🔗 GITHUB LINKS
@@ -101,25 +102,25 @@ flowchart TD
     %% 🎨 VISUAL STYLING
     %% ===========================================
 
-    %% Component Styles - Professional Colors
-    classDef presentation fill:#667eea,stroke:#4c51bf,stroke-width:3px,color:#000,font-weight:bold,font-size:28px
-    classDef service fill:#f093fb,stroke:#e53e3e,stroke-width:3px,color:#000,font-weight:bold,font-size:28px
-    classDef repo fill:#4facfe,stroke:#2b6cb0,stroke-width:3px,color:#000,font-weight:bold,font-size:28px
-    classDef domain fill:#43e97b,stroke:#38a169,stroke-width:3px,color:#000,font-weight:bold,font-size:28px
-    classDef util fill:#fa709a,stroke:#d69e2e,stroke-width:3px,color:#000,font-weight:bold,font-size:28px
-    classDef config fill:#a8edea,stroke:#805ad5,stroke-width:3px,color:#333,font-weight:bold,font-size:28px
-    classDef generator fill:#ffecd2,stroke:#dd6b20,stroke-width:3px,color:#333,font-weight:bold,font-size:28px
-    classDef store fill:#ff9a9e,stroke:#e53e3e,stroke-width:3px,color:#333,font-weight:bold,font-size:28px
+    %% Component Styles - Enhanced Borders for Export
+    classDef presentation fill:#ffffff,stroke:#000000,stroke-width:4px,color:#000000,font-weight:bold,font-size:18px
+    classDef service fill:#ffffff,stroke:#000000,stroke-width:4px,color:#000000,font-weight:bold,font-size:18px
+    classDef repo fill:#ffffff,stroke:#000000,stroke-width:4px,color:#000000,font-weight:bold,font-size:18px
+    classDef domain fill:#ffffff,stroke:#000000,stroke-width:4px,color:#000000,font-weight:bold,font-size:18px
+    classDef util fill:#ffffff,stroke:#000000,stroke-width:4px,color:#000000,font-weight:bold,font-size:18px
+    classDef config fill:#ffffff,stroke:#000000,stroke-width:4px,color:#000000,font-weight:bold,font-size:18px
+    classDef generator fill:#ffffff,stroke:#000000,stroke-width:4px,color:#000000,font-weight:bold,font-size:18px
+    classDef store fill:#ffffff,stroke:#000000,stroke-width:4px,color:#000000,font-weight:bold,font-size:18px
 
-    %% Subgraph Styles - Subtle Background Colors
-    classDef default fill:transparent,stroke:none
-    style PRES fill:#e6f3ff,stroke:#3182ce,stroke-width:4px,color:#2a69ac
-    style BIZ fill:#fff5f5,stroke:#e53e3e,stroke-width:4px,color:#c53030
-    style DATA fill:#f0fff4,stroke:#38a169,stroke-width:4px,color:#2f855a
-    style DOMAIN fill:#fffff0,stroke:#d69e2e,stroke-width:4px,color:#b7791f
-    style INFRA fill:#faf5ff,stroke:#805ad5,stroke-width:4px,color:#6b46c1
-    style STORAGE fill:#fff5f7,stroke:#d53f8c,stroke-width:4px,color:#b83280
-    style CONFIG fill:transparent,stroke:#805ad5,stroke-width:1px,stroke-dasharray: 8 8
-    style UTILS fill:transparent,stroke:#d69e2e,stroke-width:1px,stroke-dasharray: 8 8
-    style GEN fill:transparent,stroke:#dd6b20,stroke-width:1px,stroke-dasharray: 8 8
+    %% Subgraph Styles - Enhanced Borders for Export
+    classDef default fill:#ffffff,stroke:#000000,stroke-width:3px,font-size:24px,font-weight:bold,color:#000000
+    style PRES fill:#ffffff,stroke:#000000,stroke-width:5px,color:#000000,font-size:16px,font-weight:bold
+    style BIZ fill:#ffffff,stroke:#000000,stroke-width:5px,color:#000000,font-size:16px,font-weight:bold
+    style DATA fill:#ffffff,stroke:#000000,stroke-width:5px,color:#000000,font-size:16px,font-weight:bold
+    style DOMAIN fill:#ffffff,stroke:#000000,stroke-width:5px,color:#000000,font-size:16px,font-weight:bold
+    style INFRA fill:#ffffff,stroke:#000000,stroke-width:5px,color:#000000,font-size:16px,font-weight:bold
+    style STORAGE fill:#ffffff,stroke:#000000,stroke-width:5px,color:#000000,font-size:16px,font-weight:bold
+    style CONFIG fill:#ffffff,stroke:#000000,stroke-width:4px,stroke-dasharray: 8 8,font-size:14px,font-weight:bold,color:#000000
+    style UTILS fill:#ffffff,stroke:#000000,stroke-width:4px,stroke-dasharray: 8 8,font-size:14px,font-weight:bold,color:#000000
+    style GEN fill:#ffffff,stroke:#000000,stroke-width:4px,stroke-dasharray: 8 8,font-size:14px,font-weight:bold,color:#000000
 ```
