@@ -102,14 +102,14 @@ flowchart TD
     %% ===========================================
 
     %% Component Styles - Professional Colors
-    classDef presentation fill:#667eea,stroke:#4c51bf,stroke-width:3px,color:#000,font-weight:bold
-    classDef service fill:#f093fb,stroke:#e53e3e,stroke-width:3px,color:#000,font-weight:bold
-    classDef repo fill:#4facfe,stroke:#2b6cb0,stroke-width:3px,color:#000,font-weight:bold
-    classDef domain fill:#43e97b,stroke:#38a169,stroke-width:3px,color:#000,font-weight:bold
-    classDef util fill:#fa709a,stroke:#d69e2e,stroke-width:3px,color:#000,font-weight:bold
-    classDef config fill:#a8edea,stroke:#805ad5,stroke-width:3px,color:#333,font-weight:bold
-    classDef generator fill:#ffecd2,stroke:#dd6b20,stroke-width:3px,color:#333,font-weight:bold
-    classDef store fill:#ff9a9e,stroke:#e53e3e,stroke-width:3px,color:#333,font-weight:bold
+    classDef presentation fill:#667eea,stroke:#4c51bf,stroke-width:3px,color:#000,font-weight:bold,font-size:28px
+    classDef service fill:#f093fb,stroke:#e53e3e,stroke-width:3px,color:#000,font-weight:bold,font-size:28px
+    classDef repo fill:#4facfe,stroke:#2b6cb0,stroke-width:3px,color:#000,font-weight:bold,font-size:28px
+    classDef domain fill:#43e97b,stroke:#38a169,stroke-width:3px,color:#000,font-weight:bold,font-size:28px
+    classDef util fill:#fa709a,stroke:#d69e2e,stroke-width:3px,color:#000,font-weight:bold,font-size:28px
+    classDef config fill:#a8edea,stroke:#805ad5,stroke-width:3px,color:#333,font-weight:bold,font-size:28px
+    classDef generator fill:#ffecd2,stroke:#dd6b20,stroke-width:3px,color:#333,font-weight:bold,font-size:28px
+    classDef store fill:#ff9a9e,stroke:#e53e3e,stroke-width:3px,color:#333,font-weight:bold,font-size:28px
 
     %% Subgraph Styles - Subtle Background Colors
     classDef default fill:transparent,stroke:none
