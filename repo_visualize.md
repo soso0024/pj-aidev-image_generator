@@ -36,7 +36,7 @@ flowchart TD
     %% 🛠️ INFRASTRUCTURE
     subgraph INFRA [" 🛠️ INFRASTRUCTURE "]
         direction TB
-        subgraph CONFIG [" ⚙️ Configuration "]
+        subgraph CONFIG [" Configuration "]
             config["⚙️ Settings<br/>App<br/>Configuration"]:::config
         end
         subgraph UTILS [" 🔧 Utilities "]
@@ -44,7 +44,7 @@ flowchart TD
             mathu["🧮 Math Utils<br/>Mathematical<br/>Operations"]:::util
             stringu["🔤 String Utils<br/>Password<br/>Hashing"]:::util
         end
-        subgraph GEN [" 🎲 Data Generation "]
+        subgraph GEN [" Data Generation "]
             generator["🎲 Data<br/>Generator<br/>Sample Data<br/>Creation"]:::generator
         end
     end
@@ -112,15 +112,15 @@ flowchart TD
     classDef generator fill:#ffffff,stroke:#000000,stroke-width:4px,color:#000000,font-weight:bold,font-size:18px
     classDef store fill:#ffffff,stroke:#000000,stroke-width:4px,color:#000000,font-weight:bold,font-size:18px
 
-    %% Subgraph Styles - Enhanced Borders for Export
+    %% Subgraph Styles - Colored Backgrounds for Export
     classDef default fill:#ffffff,stroke:#000000,stroke-width:3px,font-size:24px,font-weight:bold,color:#000000
-    style PRES fill:#ffffff,stroke:#000000,stroke-width:5px,color:#000000,font-size:16px,font-weight:bold
-    style BIZ fill:#ffffff,stroke:#000000,stroke-width:5px,color:#000000,font-size:16px,font-weight:bold
-    style DATA fill:#ffffff,stroke:#000000,stroke-width:5px,color:#000000,font-size:16px,font-weight:bold
-    style DOMAIN fill:#ffffff,stroke:#000000,stroke-width:5px,color:#000000,font-size:16px,font-weight:bold
-    style INFRA fill:#ffffff,stroke:#000000,stroke-width:5px,color:#000000,font-size:16px,font-weight:bold
-    style STORAGE fill:#ffffff,stroke:#000000,stroke-width:5px,color:#000000,font-size:16px,font-weight:bold
-    style CONFIG fill:#ffffff,stroke:#000000,stroke-width:4px,stroke-dasharray: 8 8,font-size:14px,font-weight:bold,color:#000000
-    style UTILS fill:#ffffff,stroke:#000000,stroke-width:4px,stroke-dasharray: 8 8,font-size:14px,font-weight:bold,color:#000000
-    style GEN fill:#ffffff,stroke:#000000,stroke-width:4px,stroke-dasharray: 8 8,font-size:14px,font-weight:bold,color:#000000
+    style PRES fill:#e6f3ff,stroke:#000000,stroke-width:5px,color:#000000,font-size:16px,font-weight:bold
+    style BIZ fill:#fff5f5,stroke:#000000,stroke-width:5px,color:#000000,font-size:16px,font-weight:bold
+    style DATA fill:#f0fff4,stroke:#000000,stroke-width:5px,color:#000000,font-size:16px,font-weight:bold
+    style DOMAIN fill:#fffff0,stroke:#000000,stroke-width:5px,color:#000000,font-size:16px,font-weight:bold
+    style INFRA fill:#faf5ff,stroke:#000000,stroke-width:5px,color:#000000,font-size:16px,font-weight:bold
+    style STORAGE fill:#fff5f7,stroke:#000000,stroke-width:5px,color:#000000,font-size:16px,font-weight:bold
+    style CONFIG fill:#ffffff,stroke:#000000,stroke-width:4px,stroke-dasharray: 8 8,font-size:20px,font-weight:bold,color:#000000
+    style UTILS fill:#ffffff,stroke:#000000,stroke-width:4px,stroke-dasharray: 8 8,font-size:20px,font-weight:bold,color:#000000
+    style GEN fill:#ffffff,stroke:#000000,stroke-width:4px,stroke-dasharray: 8 8,font-size:20px,font-weight:bold,color:#000000
 ```
