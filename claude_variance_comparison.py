@@ -12,9 +12,10 @@ claude_rows = [
     ("Run 5", 587000, 743000),
 ]
 
+
 def create_variance_comparison_chart():
     """ばらつき（標準偏差）を表現した棒グラフを作成"""
-    fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(12, 8))
 
     # データの抽出
     claude_with = [row[1] for row in claude_rows]
@@ -42,7 +43,7 @@ def create_variance_comparison_chart():
 
     # バーの位置
     x = np.arange(len(categories))
-    width = 0.7
+    width = 0.6
 
     # バーグラフの描画（エラーバー付き）
     bars = ax.bar(
@@ -53,7 +54,7 @@ def create_variance_comparison_chart():
         color=colors,
         alpha=0.8,
         edgecolor="black",
-        linewidth=1.2,
+        linewidth=1.5,
         error_kw={
             "elinewidth": 3,
             "ecolor": "darkred",
@@ -73,7 +74,7 @@ def create_variance_comparison_chart():
             f"{mean:,.0f}",
             ha="center",
             va="bottom",
-            fontsize=11,
+            fontsize=22,
             fontweight="bold",
         )
         # 標準偏差を表示
@@ -83,7 +84,7 @@ def create_variance_comparison_chart():
             f"±{std:,.0f}",
             ha="center",
             va="bottom",
-            fontsize=11,
+            fontsize=22,
             style="italic",
             color="darkred",
             fontweight="bold",
@@ -91,18 +92,18 @@ def create_variance_comparison_chart():
 
     # 軸とラベルの設定
     ax.set_ylabel(
-        "Total Tokens (Mean ± Standard Deviation)", fontsize=16, fontweight="bold"
+        "Total Tokens (Mean ± Standard Deviation)", fontsize=24, fontweight="bold"
     )
-    ax.set_xlabel("Model and Configuration", fontsize=16, fontweight="bold")
+    ax.set_xlabel("Model and Configuration", fontsize=24, fontweight="bold")
     ax.set_xticks(x)
-    ax.set_xticklabels(categories, fontsize=12, fontweight="bold")
-    ax.tick_params(axis="y", labelsize=14)
+    ax.set_xticklabels(categories, fontsize=20, fontweight="bold")
+    ax.tick_params(axis="y", labelsize=20)
 
     # 縦軸を千単位（K）で表示
     ax.yaxis.set_major_formatter(ticker.FuncFormatter(lambda x, p: f"{x/1000:.0f}K"))
 
     # グリッドを追加
-    ax.grid(axis="y", alpha=0.3, linestyle="--", linewidth=0.5)
+    ax.grid(axis="y", alpha=0.3, linestyle="--", linewidth=1)
     ax.set_axisbelow(True)
 
     # 軸の範囲を設定
@@ -112,8 +113,8 @@ def create_variance_comparison_chart():
     # スパインの調整
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
-    ax.spines["left"].set_linewidth(1.0)
-    ax.spines["bottom"].set_linewidth(1.0)
+    ax.spines["left"].set_linewidth(1.5)
+    ax.spines["bottom"].set_linewidth(1.5)
 
     # レイアウトの調整
     plt.tight_layout()
@@ -123,7 +124,7 @@ def create_variance_comparison_chart():
 
 def create_coefficient_of_variation_chart():
     """変動係数 (CV) を表現した棒グラフを作成"""
-    fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(12, 8))
 
     # データの抽出
     claude_with = [row[1] for row in claude_rows]
@@ -153,7 +154,7 @@ def create_coefficient_of_variation_chart():
 
     # バーグラフの描画
     bars = ax.bar(
-        x, cvs, width, color=colors, alpha=0.8, edgecolor="black", linewidth=1.2
+        x, cvs, width, color=colors, alpha=0.8, edgecolor="black", linewidth=1.5
     )
 
     # 値をバーの上に表示
@@ -165,19 +166,19 @@ def create_coefficient_of_variation_chart():
             f"{cv:.1f}%",
             ha="center",
             va="bottom",
-            fontsize=11,
+            fontsize=22,
             fontweight="bold",
         )
 
     # 軸とラベルの設定
-    ax.set_ylabel("Coefficient of Variation (%)", fontsize=16, fontweight="bold")
-    ax.set_xlabel("Model and Configuration", fontsize=16, fontweight="bold")
+    ax.set_ylabel("Coefficient of Variation (%)", fontsize=24, fontweight="bold")
+    ax.set_xlabel("Model and Configuration", fontsize=24, fontweight="bold")
     ax.set_xticks(x)
-    ax.set_xticklabels(categories, fontsize=12, fontweight="bold")
-    ax.tick_params(axis="y", labelsize=14)
+    ax.set_xticklabels(categories, fontsize=20, fontweight="bold")
+    ax.tick_params(axis="y", labelsize=20)
 
     # グリッドを追加
-    ax.grid(axis="y", alpha=0.3, linestyle="--", linewidth=0.5)
+    ax.grid(axis="y", alpha=0.3, linestyle="--", linewidth=1)
     ax.set_axisbelow(True)
 
     # 軸の範囲を設定
@@ -186,8 +187,8 @@ def create_coefficient_of_variation_chart():
     # スパインの調整
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
-    ax.spines["left"].set_linewidth(1.0)
-    ax.spines["bottom"].set_linewidth(1.0)
+    ax.spines["left"].set_linewidth(1.5)
+    ax.spines["bottom"].set_linewidth(1.5)
 
     # レイアウトの調整
     plt.tight_layout()
@@ -242,5 +243,9 @@ if __name__ == "__main__":
     plt.show()
 
     # 画像として保存（オプション）
-    # fig1.savefig("imgs/variance_comparison_with_error_bars.png", dpi=300, bbox_inches="tight")
-    # fig2.savefig("imgs/coefficient_of_variation_comparison.png", dpi=300, bbox_inches="tight")
+    # fig1.savefig(
+    #     "imgs/variance_comparison_with_error_bars.png", dpi=300, bbox_inches="tight"
+    # )
+    fig2.savefig(
+        "imgs/claude_coefficient_of_variation.png", dpi=300, bbox_inches="tight"
+    )
