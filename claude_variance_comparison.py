@@ -124,7 +124,7 @@ def create_variance_comparison_chart():
 
 def create_coefficient_of_variation_chart():
     """変動係数 (CV) を表現した棒グラフを作成"""
-    fig, ax = plt.subplots(figsize=(12, 8))
+    fig, ax = plt.subplots(figsize=(10, 8))  # 横幅を12から10に縮小
 
     # データの抽出
     claude_with = [row[1] for row in claude_rows]
@@ -150,7 +150,7 @@ def create_coefficient_of_variation_chart():
 
     # バーの位置
     x = np.arange(len(categories))
-    width = 0.6
+    width = 0.5  # バーの幅を小さくする
 
     # バーグラフの描画
     bars = ax.bar(
@@ -183,6 +183,9 @@ def create_coefficient_of_variation_chart():
 
     # 軸の範囲を設定
     ax.set_ylim(0, max(cvs) * 1.15)
+
+    # X軸の範囲を調整して、バー間の間隔を狭くする
+    ax.set_xlim(-0.5, len(categories) - 0.5)
 
     # スパインの調整
     ax.spines["top"].set_visible(False)
