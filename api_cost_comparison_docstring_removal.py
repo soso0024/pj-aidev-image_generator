@@ -58,7 +58,7 @@ title_bbox = title.get_window_extent(fig.canvas.get_renderer())
 title_bbox = title_bbox.transformed(fig.transFigure.inverted())
 rect = patches.Rectangle(
     (title_bbox.x0 - 0.05, title_bbox.y0 - 0.02),
-    title_bbox.width + 0.1,
+    title_bbox.width + 0.15,
     title_bbox.height + 0.04,
     linewidth=2,
     edgecolor="black",
