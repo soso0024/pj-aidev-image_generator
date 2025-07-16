@@ -39,7 +39,7 @@ def create_variance_comparison_chart():
     stds = [data_stats[cat]["std"] for cat in categories]
 
     # カラーパレット
-    colors = ["#E74C3C", "#3498DB"]
+    colors = ["#3498DB", "#E74C3C"]
 
     # バーの位置
     x = np.arange(len(categories))
@@ -146,7 +146,7 @@ def create_coefficient_of_variation_chart():
         cvs.append(cv)
 
     # カラーパレット
-    colors = ["#E74C3C", "#3498DB"]
+    colors = ["#3498DB", "#E74C3C"]
 
     # バーの位置
     x = np.arange(len(categories))
